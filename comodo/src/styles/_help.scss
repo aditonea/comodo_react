@@ -1,0 +1,55 @@
+.modal--help {
+    width: 50rem;
+    height: 70rem;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    box-shadow: 5px 5px 5px rgba($comodo-blue, .5);
+    overflow: hidden;
+    img {
+        width: 80%;
+        height: 50%;
+    }
+    &-info {
+        padding: 0 4rem;
+        text-align: center;
+        font-family: "Open Sans", sans-serif;
+        font-size: 1.5rem;
+        h2 {
+            margin-bottom: 2rem;
+            color: $comodo-blue;
+        }
+        p {
+            color: $comodo-blue-dark;
+        }
+    }
+    button {
+        border: none;
+        margin-bottom: 5rem;
+        background-color: $comodo-blue;
+        color: white;
+        padding: 2rem 4rem;
+        border-radius: .5rem;
+        &:hover {
+            cursor: pointer;
+            background-color: blue;
+        }
+    }
+}
+
+.progress-bar {
+    height: 6px;
+    width: 60%;
+    background-color: $input-bg;
+    border-radius: 5px;
+    .line {
+        height: 100%;
+        // width: 20%;
+        background-color: $comodo-blue;
+        border-radius: 5px;
+    }
+}

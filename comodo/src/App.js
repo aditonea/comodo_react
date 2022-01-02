@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Dashboard from "./pages/dashboard";
+import LoginPage from "./pages/loginPage";
 
-function App() {
+export default function App() {
+  const [isLogged, setIsLogged] = useState(true)
+
+  function log(e) {
+    if (e.target.dataset.log == "signOut") {
+      setIsLogged(false)
+    } else {
+      setIsLogged(true)
+    }
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+      {
+        isLogged ? <Dashboard signOut={log} /> : <LoginPage />
+      }
+    </>
 
-export default App;
+  )
+}

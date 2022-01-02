@@ -1,0 +1,113 @@
+.modal--add {
+    width: 40rem;
+    height: 50rem;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 5px 5px 5px rgba($comodo-blue, .5);
+    .fas {
+        color: $comodo-blue;
+        font-size: 2.5rem;
+        font-weight: bolder;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        &:hover {
+            transform: scale(1.3);
+            color: red;
+            cursor: pointer;
+        }
+    }
+    form {
+        display: grid;
+        grid-template-columns: repeat(5, 5rem);
+        grid-template-rows: repeat(5, 3rem);
+        row-gap: 15px;
+        column-gap: 10px;
+
+        input[type="text"], input[type="number"], select, textarea {
+            background-color: $input-bg;
+            border: 1px solid rgba($input-grey, .2);
+            border-radius: 5px;
+            padding: 5px;
+            text-indent: 5px;
+            font-family: "Open Sans";
+            font-weight: 500;
+            font-size: 1.2rem;
+            
+            &::placeholder {
+                color: $input-grey
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+
+        input[type="text"] {
+            grid-column: 1 / -1;
+        }
+
+        input[type="number"] {
+            grid-column: 1/ span 2;
+            grid-row: 2;
+        }
+        select {
+            grid-column: 3 / -1;
+            grid-row: 2;
+        }
+        textarea {
+            grid-column: 1 / -1;
+            grid-row: 3 / 5
+        }
+    }
+    button {
+        width: 73%;
+        border: none;
+        background-color: $comodo-blue;
+        color: white;
+        font-family: "Open Sans";
+        font-weight: 600;
+        font-size: 1.4rem;
+        border-radius: 5px;
+        height: 40px;
+        margin-top: 20px;
+        &:hover {
+            background: linear-gradient($comodo-blue, $comodo-blue-dark);
+            cursor: pointer;
+        }
+    }
+}
+
+// // styling pentru layout-ul cu 2 butoane
+        // button {
+        //     grid-row: 5;
+        //     border: none;
+        //     color: white;
+        //     font-family: "Open Sans";
+        //     font-weight: 600;
+        //     font-size: 1.4rem;
+        //     border-radius: 5px;
+        //     height: 40px;
+        //     margin-top: 20px;
+        //     &.cancel {
+        //         background-color: red;
+        //         grid-column: 1/ span 2;
+        //         &:hover {
+        //             background-color: rgb(167, 2, 2);
+        //         }
+        //     }
+        //     &.add {
+        //         background-color: $comodo-blue;
+        //         grid-column: 3/-1;
+        //         &:hover {
+        //             background-color: $comodo-blue-dark;
+        //         }
+        //     }
+        //     &:hover {
+        //         cursor: pointer;
+        //     }
+        // }

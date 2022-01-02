@@ -1,0 +1,109 @@
+.table--map {
+    width: 90%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(9, 9%);
+    grid-template-rows: repeat(10, 7%);
+    row-gap: 20px;
+    column-gap: 20px;
+    place-content: center;
+    z-index: 0;
+}
+
+.table {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all .5s ease;
+    .front {
+        border-radius: 5px;
+        background-color: $available-table;
+        display: grid;
+        place-items: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        &:hover{
+            transform: scale(1.1);
+            box-shadow: 2px 2px 5px rgba(#888888, .2);
+        }
+        & > .fas {
+            font-size: 2rem;
+            position: absolute;
+            top: .5rem;
+            right: 1rem;
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.3);
+            }
+        }
+    }
+    .back {
+        background-color: burlywood;
+        border-radius: 5px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding-left: 2rem;
+        .fas {
+            margin-right: 1rem;
+        }
+        p:hover {
+            cursor: pointer;
+            & > i {
+                transform: scale(1.3);
+                cursor: pointer;
+            }  
+        } 
+    }
+    & > .fas {
+        color: $comodo-blue;
+        font-size: 1.5rem;
+        position: absolute;
+        top: .5rem;
+        right: 1rem;
+        &:hover {
+            transform: scale(1.3);
+            color: red;
+            cursor: pointer;
+        }
+    }
+    .details {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+.table {
+    &-47, &-31, &-27, &-23, &-7 {
+        grid-column: 1;
+    }
+    &-53, &-41, &-20 {
+        grid-column: 2;
+    }
+    &-34, &-30, &-26, &-22 {
+        grid-column: 4;
+    }
+    &-51 {
+        grid-column: 5;
+    }
+    &-44, &-39, &-18, &-10, &-3 {
+        grid-column: 6;
+    }
+    &-32, &-28, &-24 {
+        grid-column: 7;
+    }
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
