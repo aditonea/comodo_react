@@ -1,82 +1,82 @@
-
 #login {
-    @include size(100vw, 100vh);
-    @include center;
-    position: relative;
+  @include size(100vw, 100vh);
+  display: grid;
+  place-items: center;
+  position: relative;
 }
 
 .splash {
+  @include size(100%, 100%);
+  @include bg-image("../../public/images/photo-splash.jpeg", center, cover);
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  &::before {
+    content: "";
     @include size(100%, 100%);
-    @include bg-image("../../public/images/photo-splash.jpeg", center, cover);
     position: absolute;
-    top: 0;
-    z-index: -1;
-    &::before {
-        content: "";
-        @include size(100%, 100%);
-        position: absolute;
-        background-color: $comodo-blue;
-        opacity: .85;
-        z-index: 0;
-    }
+    background-color: $comodo-blue;
+    opacity: 0.85;
+    z-index: 0;
+  }
 }
 
 .modal__login {
-    @include modal;
-    width: 70rem;
-    height: 50rem;
-    &-image {
-        @include size(50%, 100%);
-        @include bg-image("../../public/images/photo-login.jpeg", center, cover);
-        border-radius: 10px 0 0 10px;
-        @include small {
-            @include size(100%, 60%);
-            border-radius: 10px 10px 0 0;
-        }
+  @include modal;
+  @include size(70rem, 50rem);
+  &-image {
+    @include size(50%, 100%);
+    @include bg-image("../../public/images/photo-login.jpeg", center, cover);
+    border-radius: 10px 0 0 10px;
+    @include small {
+      @include size(100%, 70%);
+      border-radius: 10px 10px 0 0;
     }
-    &-form {
-        @include flex(column, center, center);
-        width: 50%;
-        position: relative;
-        h1 {
-            font-family: "Mitr", sans-serif;
-            color: $comodo-blue;
-            font-size: 3rem;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            width: 60%;
-            input[type="text"], input[type="password"] {
-                margin-top: 1rem;
-                height: 2rem;
-                @include input;
-            }
-            button {
-                height: 3rem;
-                @include button;
-            }
-        }
-        p {
-            @include font(1.5rem);
-            @include pop-animation;
-            font-weight: 500;
-            position: absolute;
-            bottom: 1rem;
-            color: red;
-            opacity: 0;
-            border: 1px solid red;
-            border-radius: 1rem;
-            padding: .5rem 1rem;
-        }
-        @include small {
-            @include size(100%, 80%);
-            @include flex(column, space-around, center);
-        }
+  }
+  &-form {
+    @include flex(column, center, center);
+    width: 50%;
+    position: relative;
+    h1 {
+      font-family: "Mitr", sans-serif;
+      color: $comodo-blue;
+      font-size: 3rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 60%;
+      input[type="text"],
+      input[type="password"] {
+        margin-top: 1rem;
+        height: 2rem;
+        @include input;
+      }
+      button {
+        height: 3rem;
+        @include button;
+      }
+    }
+    p {
+      @include font(1.5rem);
+      @include pop-animation;
+      font-weight: 500;
+      position: absolute;
+      bottom: 1rem;
+      color: red;
+      opacity: 0;
+      border: 1px solid red;
+      border-radius: 1rem;
+      padding: 0.5rem 1rem;
     }
     @include small {
-        @include size(80%, 70%);
-        @include flex(column, space-between, center);
-        min-width: 350px;
+      @include size(100%, 80%);
+      @include flex(column, space-around, center);
     }
+  }
+  @include small {
+    @include size(80%, 70%);
+    @include flex(column, space-between, center);
+    min-width: 350px;
+  }
 }
