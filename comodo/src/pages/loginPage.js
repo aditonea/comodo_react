@@ -4,9 +4,9 @@ import LoginForm from "../components/loginForm";
 export default function LoginPage() {
 
     return (
-        <div id="login">
+        <div id="login" >
             <LoginForm />
             <div className="splash"></div>
-        </div>
+        </div >
     )
 }

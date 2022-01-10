@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../firebase"
 
 export default function LoginForm() {
     const [loginData, setLoginData] = useState({
         username: "",
         password: "",
     })
-    const [logged, setLogged] = useState(false)
+    const [loginErr, setLoginErr] = useState(false)
+    const navigate = useNavigate()
 
     function handleLogin(e) {
         let data = e.target
@@ -17,27 +21,52 @@ export default function LoginForm() {
         })
     }
 
-    // function checkLogin(e) {
-    //     e.preventDefault()
-    //     setLogged(loginData.username === "admin" && loginData.password === "admin")
-    // }
+    function handleError() {
+        setLoginErr(true)
+    }
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLoginErr(false)
+        }, 4000)
+    }, [loginErr])
 
+    function login(e) {
+        e.preventDefault()
+        signInWithEmailAndPassword(auth, loginData.username, loginData.password)
+            .then(() => navigate("/dashboard"))
+            .catch((err) => handleError())
 
-
+    }
 
     return (
-        <div className="modal--login">
-            <div className="modal--login-image"></div>
-            <div className="modal--login-form">
+        <div className="modal__login">
+            <div className="modal__login-image"></div>
+            <div className="modal__login-form">
                 <h1>comodo</h1>
                 <form>
-                    <input type="text" name="username" value={loginData.username} onChange={handleLogin} placeholder="Username"></input>
-                    <input type="password" name="password" value={loginData.password} onChange={handleLogin} placeholder="Password"></input>
+                    <input
+                        type="text"
+                        name="username"
+                        value={loginData.username}
+                        onChange={handleLogin}
+                        placeholder="Email">
+                    </input>
+
+                    <input
+                        type="password"
+                        name="password"
+                        value={loginData.password}
+                        onChange={handleLogin}
+                        placeholder="Parola">
+                    </input>
+
                     <button
-                    // onClick={checkLogin}
-                    >LOGIN</button>
+                        onClick={login}
+                    >LOGIN
+                    </button>
                 </form>
+                {loginErr && <p>Emailul sau parola incorecte!</p>}
             </div>
         </div>
     )

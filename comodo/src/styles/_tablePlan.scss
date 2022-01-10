@@ -1,36 +1,68 @@
-.table--map {
-    width: 90%;
-    height: 100%;
+.table-map {
+    @include size(100%, 100%);
     display: grid;
+    place-content: center;
     grid-template-columns: repeat(9, 9%);
     grid-template-rows: repeat(10, 7%);
     row-gap: 20px;
     column-gap: 20px;
-    place-content: center;
     z-index: 0;
+    padding-right: 10rem;
+    background-color: #f7f8fd;
 }
 
 .table {
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.2rem;
+    @include font(1.2rem);
     font-weight: 500;
     position: relative;
     transform-style: preserve-3d;
     transition: all .5s ease;
-    .front {
+    &__front {
+        @include size(100%, 100%);
+        @include flex(column, center, center);
         border-radius: 5px;
         background-color: $available-table;
-        display: grid;
-        place-items: center;
         position: absolute;
-        width: 100%;
-        height: 100%;
         backface-visibility: hidden;
+        .fas.options {
+            opacity: 0;
+            color: black;
+            font-size: 1.5rem;
+            position: absolute;
+            top: .5rem;
+            right: 1rem;
+            &:hover {
+                transform: scale(1.5);
+                cursor: pointer;
+            }
+        }
+        & > p {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .details {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
         &:hover{
             transform: scale(1.1);
-            box-shadow: 2px 2px 5px rgba(#888888, .2);
+            box-shadow: 2px 2px 5px rgba(#888888, .4);
+            cursor: pointer;
         }
-        & > .fas {
+        &:hover > .fas.options {
+            opacity: 1;
+        }
+    }
+    &__back {
+        @include size(100%, 100%);
+        @include flex(column, center, center);
+        background-color: burlywood;
+        border-radius: 5px;
+        position: absolute;
+        backface-visibility: hidden;
+        transform: rotateY(180deg);
+        .fas.cancel {
             font-size: 2rem;
             position: absolute;
             top: .5rem;
@@ -40,21 +72,11 @@
                 transform: scale(1.3);
             }
         }
-    }
-    .back {
-        background-color: burlywood;
-        border-radius: 5px;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        transform: rotateY(180deg);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        padding-left: 2rem;
-        .fas {
-            margin-right: 1rem;
+        p {
+            margin-top: 1rem;
+        }
+        span {
+            margin-left: 1rem;
         }
         p:hover {
             cursor: pointer;
@@ -63,23 +85,6 @@
                 cursor: pointer;
             }  
         } 
-    }
-    & > .fas {
-        color: $comodo-blue;
-        font-size: 1.5rem;
-        position: absolute;
-        top: .5rem;
-        right: 1rem;
-        &:hover {
-            transform: scale(1.3);
-            color: red;
-            cursor: pointer;
-        }
-    }
-    .details {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
     }
 }
 

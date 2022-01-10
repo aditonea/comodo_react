@@ -6,23 +6,23 @@ export default function Help({ clickHelp }) {
     const cards = [
         {
             image: "welcome",
-            title: "Welcome",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit ante. Donec non tincidunt ipsum. - 1"
+            title: "Bine ai venit!",
+            text: "Comodo este o platforma online de gestiune a rezervarilor din locatia ta sincronizata la baza de date"
         },
         {
             image: "reservations",
-            title: "Reservations",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit ante. Donec non tincidunt ipsum. - 2"
+            title: "Gesiune in timp real",
+            text: "Incarca lista de rezervari, selecteaza rezervarea si apoi doar selecteaza pozitia unde doresti sa fie amplasata"
         },
         {
             image: "analytics",
-            title: "Analytics",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit ante. Donec non tincidunt ipsum. - 3"
+            title: "Grafice",
+            text: "Modulul de date analitice te ajuta sa monitorizezi diferentele de rezervari in functie de zile (in dezvoltare) si situatia rezervarilor in functie de tipul acestora"
         },
         {
             image: "settings",
-            title: "Settings",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit ante. Donec non tincidunt ipsum. - 4"
+            title: "In curand",
+            text: "Platforma este inca in stadiu de dezvoltare, dar pregatim o multime de functionalitati noi"
         }
     ]
 
@@ -36,16 +36,16 @@ export default function Help({ clickHelp }) {
 
     return (
         <div className="container">
-            <div className="modal--help">
+            <div className="modal__help">
                 <img src={`./images/help/${cards[progress - 1].image}.svg`} alt="" />
-                <div className="modal--help-info">
-                    <h2>{cards[progress - 1].title}</h2>
+                <div className="modal__help-info">
+                    <h2 className="title">{cards[progress - 1].title}</h2>
                     <p>{cards[progress - 1].text}</p>
                 </div>
-                <div className="progress-bar">
+                <div className="modal__help-progress">
                     <div className="line" style={{ width: `${25 * progress}%` }} />
                 </div>
-                <button onClick={handleClick}>{progress < 4 ? "Next" : "Finish"}</button>
+                <button onClick={handleClick}>{progress < 4 ? "Urmatorul" : "Gata"}</button>
             </div>
         </div >
     )

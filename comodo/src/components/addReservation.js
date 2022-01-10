@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { ref, set } from "firebase/database";
+import { db } from "../firebase"
 
-export default function AddReservation({ handleModal }) {
+import Notification from "./notification";
+
+export default function AddReservation({ reservations, handleModal }) {
+    const [notification, setNotification] = useState(false)
     const [formData, setFormData] = useState({
         name: "",
         people: 0,
@@ -19,31 +24,62 @@ export default function AddReservation({ handleModal }) {
         })
     }
 
-    console.log(formData)
+    function addReservation() {
+        set(ref(db, `reservations/${reservations.length}`), formData)
+            .then(() => setNotification(true))
+        setFormData({
+            name: "",
+            people: 0,
+            category: "Regular",
+            mention: ""
+        })
+    }
+
+
 
 
     return (
         <div className="container">
-            <div className="modal--add">
+            <div className="modal__add">
                 <i class="fas fa-times" onClick={handleModal}></i>
-                <h2 className="modal-title">Add reservation</h2>
+                <h2 className="modal-title title">Adauga rezervare</h2>
                 <form>
-                    <input type="text" name="name" value={formData.name} placeholder="Name" onChange={handleChange}></input>
-                    <input type="number" name="people" value={formData.people} placeholder="People" onChange={handleChange}></input>
-                    <select name="category" value={formData.category} onChange={handleChange}>
+                    <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        placeholder="Nume"
+                        onChange={handleChange}>
+                    </input>
+
+                    <input
+                        type="number"
+                        name="people"
+                        value={formData.people}
+                        placeholder="Persoane"
+                        onChange={handleChange}>
+                    </input>
+
+                    <select
+                        name="category"
+                        value={formData.category}
+                        onChange={handleChange}>
                         <option>Regular</option>
                         <option>VIP</option>
-                        <option>Offer</option>
-                        <option>Anniversary</option>
+                        <option>Oferta</option>
+                        <option>Aniversare</option>
                     </select>
-                    <textarea name="mention" value={formData.mention} placeholder="Mention" onChange={handleChange}></textarea>
 
-                    {/* Layout cu doua butoane in partea de jos: Cancel / Add */}
-                    {/* <button className="cancel" onClick={handleModal}>Cancel</button>
-                    <button className="add">Add</button> */}
+                    <textarea
+                        name="mention"
+                        value={formData.mention}
+                        placeholder="Observatii"
+                        onChange={handleChange}>
+                    </textarea>
                 </form>
-                <button>Add</button>
+                <button onClick={addReservation}>Adauga</button>
             </div>
+            {notification && <Notification text={"Rezervare adaugata cu succes!"} />}
         </div>
     )
 }

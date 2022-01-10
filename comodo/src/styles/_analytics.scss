@@ -1,15 +1,14 @@
-.modal--analytics {
-    width: 110rem;
-    height: 70rem;
+.modal__analytics {
+    @include size(40%, 60%);
+    @include flex(column, space-around, center);
     background-color: white;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
     position: relative;
     box-shadow: 5px 5px 5px rgba($comodo-blue, .5);
-    // overflow: hidden;
+    h2 {
+        margin-bottom: 0;
+        padding-top: 2rem;
+    }
     & > .fas {
         color: $comodo-blue;
         font-size: 2.5rem;
@@ -21,65 +20,6 @@
             transform: scale(1.3);
             color: red;
             cursor: pointer;
-        }
-    }
-    h2 {
-        color: $comodo-blue;
-        font-family: "Open Sans", sans-serif;
-        font-size: 2em;
-    }
-    &-menu {
-        width: 100%;
-        padding: 0 50px;
-        display: flex;
-        justify-content: space-between;
-        button {
-            border: none;
-            background-color: $comodo-blue;
-            color: white;
-            font-family: "Open Sans", sans-serif;
-            font-size: 1.2rem;
-            padding: 5px 20px;
-            &:first-of-type {
-                border-radius: 5px 0 0 5px;
-            }
-            &:last-of-type {
-                border-radius: 0 5px 5px 0;
-            }
-            &:hover {
-                background: linear-gradient($comodo-blue, $comodo-blue-dark);
-                cursor: pointer;
-            }
-        }
-    input[type="date"] {
-        border: 1px solid $comodo-blue;
-        font-family: "Open Sans", sans-serif;
-        color: $comodo-blue;
-        padding: 5px;
-    }
-    
-    }
-    .modal--analytics-data {
-        width: 100%;
-        padding:  0 50px;
-        height: 70%;
-        display: flex;
-        .analytics-chart {
-            width: 80%;
-            height: 100%;
-        }
-        .analytics-stats {
-            width: 30%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            .infos {
-                height: 30%;
-                width: 100%;
-                background-color: yellowgreen;
-                border-radius: 10px;
-            }
         }
     }
 }

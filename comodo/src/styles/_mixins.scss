@@ -1,0 +1,102 @@
+@mixin modal {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+}
+
+@mixin font($size) {
+    font-family: "Open Sans", sans-serif;
+    font-size: $size
+}
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin bg-image($url, $position, $size) {
+    background-image: url($url);
+    background-position: $position;
+    background-size: $size;
+}
+
+@mixin center {
+    display: grid;
+    place-content: center;
+}
+
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin input {
+    background-color: $input-bg;
+    border: none;
+    padding: 2rem 1rem;
+    border-radius: 5px;
+    color: $input-grey;
+    text-indent: 0.5rem;
+    text-align: center;
+    &::placeholder {
+        color: $input-grey
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+@mixin button {
+    background-color: $comodo-blue;
+    color: white;
+    border: none;
+    margin-top: 2rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    &:hover {
+        cursor: pointer;
+        background-color: $comodo-blue-dark;
+    }
+}
+
+@mixin phone {
+    @media only screen and (max-width: 425px) {
+        @content;
+    }
+}
+
+@mixin table($landscape: false) {
+    @media only screen and (min-width: 426px) and (max-width: 768px) {
+        @content;
+    }
+
+    @if $landscape {
+        @media only screen and (min-width: 769px) and (max-width: 1024px) {
+            @content;
+        }
+    }
+}
+
+@mixin small {
+    @media only screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin pop-animation {
+    animation-name: popUp;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+@mixin loading {
+    animation-name: loading;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }

@@ -1,9 +1,13 @@
-$comodo-blue: #2A58AD;
-$comodo-blue-dark: #22577A;
+$comodo-blue: #5057b9;
+$comodo-blue-dark: #353a54;
+
 $input-bg: #F8F5F5;
 $input-grey: #9A9A9A;
 
 $available-table: #f7da38;
+$taken-table: #ccb5b6;
+
+$background: #f7f8fd;
 
 
 * {
@@ -14,4 +18,9 @@ $available-table: #f7da38;
 
 html {
     font-size: 10px;
+}
+
+.title {
+    @include font(2rem);
+    color: $comodo-blue;
 }

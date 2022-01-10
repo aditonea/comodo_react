@@ -1,14 +1,12 @@
-.modal--add {
-    width: 40rem;
-    height: 50rem;
-    background-color: white;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.modal__add {
+    @include modal;
+    @include size(40rem, 50rem);
+    @include flex(column, center, center);
     position: relative;
     box-shadow: 5px 5px 5px rgba($comodo-blue, .5);
+    h2 {
+        margin-bottom: 3rem;
+    }
     .fas {
         color: $comodo-blue;
         font-size: 2.5rem;
@@ -28,23 +26,12 @@
         grid-template-rows: repeat(5, 3rem);
         row-gap: 15px;
         column-gap: 10px;
-
         input[type="text"], input[type="number"], select, textarea {
-            background-color: $input-bg;
+            @include input;
+            @include font(1.2rem);
             border: 1px solid rgba($input-grey, .2);
-            border-radius: 5px;
             padding: 5px;
-            text-indent: 5px;
-            font-family: "Open Sans";
             font-weight: 500;
-            font-size: 1.2rem;
-            
-            &::placeholder {
-                color: $input-grey
-            }
-            &:focus {
-                outline: none;
-            }
         }
 
         input[type="text"] {
@@ -65,49 +52,10 @@
         }
     }
     button {
+        @include button;
+        @include font(1.4rem);
         width: 73%;
-        border: none;
-        background-color: $comodo-blue;
-        color: white;
-        font-family: "Open Sans";
         font-weight: 600;
-        font-size: 1.4rem;
-        border-radius: 5px;
-        height: 40px;
-        margin-top: 20px;
-        &:hover {
-            background: linear-gradient($comodo-blue, $comodo-blue-dark);
-            cursor: pointer;
-        }
+        height: 4rem;
     }
-}
-
-// // styling pentru layout-ul cu 2 butoane
-        // button {
-        //     grid-row: 5;
-        //     border: none;
-        //     color: white;
-        //     font-family: "Open Sans";
-        //     font-weight: 600;
-        //     font-size: 1.4rem;
-        //     border-radius: 5px;
-        //     height: 40px;
-        //     margin-top: 20px;
-        //     &.cancel {
-        //         background-color: red;
-        //         grid-column: 1/ span 2;
-        //         &:hover {
-        //             background-color: rgb(167, 2, 2);
-        //         }
-        //     }
-        //     &.add {
-        //         background-color: $comodo-blue;
-        //         grid-column: 3/-1;
-        //         &:hover {
-        //             background-color: $comodo-blue-dark;
-        //         }
-        //     }
-        //     &:hover {
-        //         cursor: pointer;
-        //     }
-        // }
+} 

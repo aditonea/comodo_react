@@ -1,24 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
 import Dashboard from "./pages/dashboard";
 import LoginPage from "./pages/loginPage";
 
 export default function App() {
-  const [isLogged, setIsLogged] = useState(true)
-
-  function log(e) {
-    if (e.target.dataset.log == "signOut") {
-      setIsLogged(false)
-    } else {
-      setIsLogged(true)
-    }
-  }
-
 
   return (
     <>
-      {
-        isLogged ? <Dashboard signOut={log} /> : <LoginPage />
-      }
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </BrowserRouter>
+
     </>
 
   )

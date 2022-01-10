@@ -1,44 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Reservation from "./reservation";
-import { userData } from "../userData"
 
 
 
+export default function ReservationList({
+    reservations,
+    clickReservation,
+    handleNotification
+}) {
 
-export default function ReservationList({ clickReservation }) {
     const [search, setSearch] = useState("")
     const [toggle, setToggle] = useState(true)
+
 
     function handleSearch(e) {
         setSearch(e.target.value)
     }
 
-    function handleToggle() {
+    function handleHide() {
         setToggle(prevState => !prevState)
     }
 
-
-
     return (
-        <div className={`reservation--menu ${toggle ? "hide" : ""}`}>
-            <div className="search">
+        <div className={`reservations ${toggle ? "hide" : ""}`}>
+            <div className="reservations__search">
                 <form>
                     <input
                         type="text"
                         value={search}
                         onChange={handleSearch}
-                        placeholder="Search reservation"></input>
+                        placeholder="Cauta rezervare"></input>
                 </form>
             </div>
 
-
-            <div className="reservation--list">
-                {(search ? userData.filter(user => user.name.toLowerCase().includes(search)) : userData).map(user =>
-                    <Reservation key={user.id} user={user} clickReservation={clickReservation} />
-                )}
+            <div className="reservations__list">
+                {
+                    (search ? reservations.filter(user => user.name.toLowerCase().includes(search)) : reservations).map((reservation, index) =>
+                        <Reservation
+                            key={reservation.id}
+                            index={index}
+                            reservation={reservation}
+                            clickReservation={clickReservation}
+                            handleHide={handleHide}
+                            handleNotification={handleNotification} />
+                    )
+                }
             </div>
 
-            <div className="dot" onClick={handleToggle}><i class={`fas fa-chevron-${toggle ? "left" : "right"}`}></i></div>
+            <div className="dot" onClick={handleHide}>
+                <i class={`fas fa-chevron-${toggle ? "left" : "right"}`}></i>
+            </div>
         </div>
 
 

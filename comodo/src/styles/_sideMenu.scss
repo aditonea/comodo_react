@@ -1,26 +1,34 @@
 .menu {
-    height: 100vh;
-    width: 7rem;
-    background-color: $comodo-blue;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+    @include size(7rem, 100vh);
+    @include flex(column, space-evenly, center);
+    background-color: #353a54;
     z-index: 2;
     position: absolute;
-    .fas, .far {
-        color: white;
-        font-size: 2.5rem;
-    }
-    &--actions, &--stats {
-        height: 25%;
+    color: white;
+    &__user {
+        @include font(1.2rem);
+        font-weight: 600;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
         align-items: center;
+        & > span {
+            margin-top: 5px;
+        }
     }
-    .fa-cog {
-        color: rgba(white, .5);
+    &__actions, &__stats {
+        @include flex(column, space-around, center);
+        height: 25%;
+        &-stat {
+            @include flex(column, space-between, center);
+            span {
+                @include font(1.3rem);
+                font-weight: 600;
+                margin-top: .8rem;
+            }
+        }
+    }
+    .fas, .far {
+        font-size: 2.5rem;
     }
     .hover {
         color: rgba(white, .5);
@@ -28,21 +36,6 @@
             color: white;
             cursor: pointer;
         }
-    }
-}
-
-
-
-.stat {
-    color: white;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    & > span {
-        margin-top: 5px;
     }
 }
 

@@ -1,0 +1,62 @@
+.loading__container {
+  background-color: rgba($comodo-blue, .5);
+  @include size(100%, 100%);
+  border: 1px solid black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($comodo-blue,.8);
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  &-box {
+    @include flex(column, center, center);
+    p {
+      @include font(2rem);
+      @include loading;
+      color: white;
+      margin-top: 2rem;
+      animation-name: loading-text;
+    }
+    .loading {
+      @include flex(row, center, center);
+      &-dot {
+        background-color: white;
+        width: 5rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        margin-left: 3px;
+        @include loading;
+        &:nth-of-type(2) {
+          animation-delay: .1s;
+        }
+        &:nth-of-type(3) {
+          animation-delay: .2s;
+        }
+      }
+    }
+  }
+}
+
+    
+  @keyframes loading {
+    0% {
+      transform: scale(.8);
+      opacity: .7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes loading-text {
+    0% {
+      opacity: .5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

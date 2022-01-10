@@ -1,9 +1,16 @@
 .hide {
-    right: -460px;
+    right: -23.8%;
 }
 
 .taken {
-    background-color: #ccb5b6;
+    background-color: $taken-table !important;
+    &:hover {
+      transform: scale(1) !important;
+    }
+}
+
+.available {
+  background-color: $available-table;
 }
 
 .border {
@@ -36,7 +43,6 @@
       animation: moveGradient 3s alternate infinite;
     }
   }
-
   
   @keyframes moveGradient {
     50% {

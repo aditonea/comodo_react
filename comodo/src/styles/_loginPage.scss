@@ -1,52 +1,43 @@
 
 #login {
-    width: 100vw;
-    height: 100vh;
+    @include size(100vw, 100vh);
+    @include center;
     position: relative;
-    display: grid;
-    place-content: center;
 }
 
 .splash {
-    width: 100%;
-    height: 100%;
-    background-image: url("../../public/images/photo-splash.jpeg");
-    background-position: center;
-    background-size: cover;
+    @include size(100%, 100%);
+    @include bg-image("../../public/images/photo-splash.jpeg", center, cover);
     position: absolute;
     top: 0;
     z-index: -1;
     &::before {
         content: "";
+        @include size(100%, 100%);
         position: absolute;
-        width: 100%;
-        height: 100%;
         background-color: $comodo-blue;
         opacity: .85;
         z-index: 0;
     }
 }
 
-.modal--login {
-    background-color: white;
+.modal__login {
+    @include modal;
     width: 70rem;
     height: 50rem;
-    border-radius: 10px;
-    display: flex;
     &-image {
-        width: 50%;
-        height: 100%;
-        background-image: url("../../public/images/photo-login.jpeg");
-        background-position: center;
-        background-size: cover;
+        @include size(50%, 100%);
+        @include bg-image("../../public/images/photo-login.jpeg", center, cover);
         border-radius: 10px 0 0 10px;
+        @include small {
+            @include size(100%, 60%);
+            border-radius: 10px 10px 0 0;
+        }
     }
     &-form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        @include flex(column, center, center);
         width: 50%;
+        position: relative;
         h1 {
             font-family: "Mitr", sans-serif;
             color: $comodo-blue;
@@ -58,31 +49,34 @@
             width: 60%;
             input[type="text"], input[type="password"] {
                 margin-top: 1rem;
-                background-color: $input-bg;
-                border: none;
                 height: 2rem;
-                padding: 2rem 1rem;
-                border-radius: 5px;
-                color: $input-grey;
-                text-indent: 0.5rem;
-                text-align: center;
-                &:focus {
-                    outline: none;
-                }
+                @include input;
             }
             button {
-                background-color: $comodo-blue;
-                color: white;
-                border: none;
                 height: 3rem;
-                margin-top: 2rem;
-                border-radius: 5px;
-                font-size: 1.1rem;
-                &:hover {
-                    cursor: pointer;
-                    background-color: $comodo-blue-dark;
-                }
+                @include button;
             }
         }
+        p {
+            @include font(1.5rem);
+            @include pop-animation;
+            font-weight: 500;
+            position: absolute;
+            bottom: 1rem;
+            color: red;
+            opacity: 0;
+            border: 1px solid red;
+            border-radius: 1rem;
+            padding: .5rem 1rem;
+        }
+        @include small {
+            @include size(100%, 80%);
+            @include flex(column, space-around, center);
+        }
+    }
+    @include small {
+        @include size(80%, 70%);
+        @include flex(column, space-between, center);
+        min-width: 350px;
     }
 }

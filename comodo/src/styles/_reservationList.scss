@@ -1,111 +1,129 @@
-.reservation--menu {
+.reservations {
+    @include size(25%, 95%);
     position: absolute;
     right: 0;
     background-color: rgb(235, 235, 235);
-    width: 25%;
-    height: 95vh;
     border-radius: 10px 0 0 10px;
     transition: right .5s;
     z-index: 2;
-        form {
+    &__search > form {
             text-align: center;
             margin: 20px auto;
             width: 100%;
             input[type="text"]{
+                @include input;
+                background-color: white;
+                @include font(1.3rem);
                 width: 90%;
                 height: 3rem;
                 padding: 1.5rem 0;
-                text-indent: 1.5rem;
-                font-family: "Open-Sans", sans-serif;
+                border: 1px solid rgba($comodo-blue,.5);
                 font-weight: 500;
-                border: none;
-                border: 1px solid $comodo-blue;
-                &:focus {
-                    outline: none;
-                }
             }
+        }
+    &__list {
+            @include size(100%, 90%);
+            overflow: scroll;
         }
     }
 
 
-.reservation--list {
-    width: 100%;
-    height: 90%;
-    overflow: scroll;
-}
 
-.reservation {
+.reservation__card {
+    @include size(90%, 5rem);
+    @include flex(row, space-around, center);
+    @include font(1.2rem);
     color: $comodo-blue-dark;
-    width: 90%;
-    height: 5rem;
-    margin: 0 auto;
     background-color: white;
-    margin-top: 7px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    margin: 7px auto;
     border-radius: 0 5px 5px 0;
-    border-left: 3px solid $comodo-blue;
+    border-left: .3rem solid $comodo-blue;
     box-shadow: 2px 2px 0px rgb(0 0 0 / 10%);
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.2rem;
     font-weight: 600;
-        & .user-details {
-            width: 40%;
-            display: flex;
-            flex-direction: column;
-            .reservation--name{
-                font-size: 1.4rem;
-                font-weight: 700;
-            }
-        }
-        & .user-people {
-            width: 10%;
-            font-size: 1.3rem;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            span {
-                font-size: 1.4rem;
-                font-weight: 700;
-            }
-        }
-        & .user-actions {
-            width: 30%;
-            display: flex;
-            justify-content: space-around;
-            & .fas {
-                font-size: 1.8rem;
-                color: $comodo-blue;
-                &.fa-trash:hover {
-                    color: red;
+            &-details {
+                width: 40%;
+                display: flex;
+                flex-direction: column;
+                .name{
+                    font-size: 1.4rem;
+                    font-weight: 700;
                 }
-                &:hover {
-                    transform: scale(1.2);
-                    cursor: pointer;
+            }
+            &-people {
+                width: 10%;
+                font-size: 1.3rem;
+                @include flex(row, space-around, center);
+            }
+            &-actions {
+                opacity: 0;
+                width: 30%;
+                display: flex;
+                justify-content: space-around;
+                & .fas {
+                    font-size: 1.8rem;
+                    color: rgba($comodo-blue, .6);
+                    &.fa-trash:hover {
+                        color: red;
+                    }
+                    &:hover {
+                        color: rgba($comodo-blue, 1);
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+    
                 }
-
+    }
+    .reservation-edit {
+        width: 95%;
+        & > form {
+            @include flex(row, space-between, center);
+            input, select {
+                @include input;
+                @include font(1.2rem);
+                border: 1px solid rgba($input-grey, .2);
+                padding: 5px;
+            }
+            .user-people > input[type="number"] {
+                width: 4rem;
+                text-align: center;
+                margin-left: .5rem;
+            }
+            .user-actions {
+                width: 6rem;
+                display: flex;
+                justify-content: space-around;
+                & .fas {
+                    font-size: 1.8rem;
+                    color: $comodo-blue;
+                    &:hover {
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+                }
             }
         }
+    }
     &:hover {
-        cursor: hand;
+        cursor: pointer;
         transform: scale(1.02);
+        border-left-width: .5rem;
+    }
+    &:hover > &-actions {
+        opacity: 1;
     }
 }
 
 
 
 .dot {
-    background-color: $comodo-blue;
+    background-color: #353a54;
     width: 3rem;
     aspect-ratio: 1;
     border-radius: 50%;
     position: absolute;
     top: 50%;
     left: -1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex(row, center, center);
     .fas {
         color: white;
         font-size: 2.2em;
