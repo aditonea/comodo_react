@@ -4,7 +4,7 @@ You can check and test the demo app [here](https://brave-jepsen-ca804f.netlify.a
 
 ### Test credentials:
 
-admin: admin@comodo.app
+admin: admin@comodo.app <br>
 guest: guest@comodo.app
 
 password: comodo
